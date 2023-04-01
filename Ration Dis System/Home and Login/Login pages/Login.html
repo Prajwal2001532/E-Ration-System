@@ -1,0 +1,173 @@
+<html >
+  <head>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Manager - Sign up</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <section class="vh-100" style="background-color: #eee;">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-12 col-xl-11">
+            <div class="card text-black" style="border-radius: 25px;">
+              <div class="card-body p-md-5">
+                <div class="row justify-content-center">
+                  <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+    
+                    <h2 class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="text-align: center;">Manager Sign up</h2>
+    
+                    <form class="mx-1 mx-md-4" onsubmit="return false">
+    
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="form3Example1c">Name</label>
+                          <input type="text"  class="form-control" id ="name" placeholder="Enter Name"  required="" autofocus=""/>
+                         
+                        </div>
+                      </div>
+    
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="form3Example3c">Your Email</label>
+                          <input type="email"  class="form-control" id = "email" placeholder="Enter Email" required="" autofocus=""/>
+                          
+                        </div>
+                      </div>
+    
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="form3Example4c">Password</label>
+                          <input type="password"  class="form-control" id = "pass"  placeholder="Enter password"  required="" autofocus=""/>
+
+                        </div>
+                      </div>
+    
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="form3Example4cd">Confirm your password</label>
+                          <input type="password"  class="form-control" id = "pass2"  placeholder="Repeat Password " required ="" autofocus=""/>
+                          
+                        </div>
+                      </div>
+                      
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                        <div class="form-outline flex-fill mb-0">  
+                          <label class="form-label" for="form3Example4cd">Location : </label>                      
+                          <input type="text" list="cityname" name="city" class="form-control"  id = "loc" placeholder="Enter Location of Shop" required="" autofocus="">
+                          <datalist id="cityname" >
+                            <option value="Chennai">
+                            <option value="Madhurai">
+                            <option value="Salem"> 
+                            <option value="Coimbatore">
+                            <option value="Trichy">  
+                          </datalist>
+                        </div>
+                       </div> 
+                    
+                      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                        <button type="button" class="btn btn-primary btn-lg" type="submit" onclick = "handleRegister()">Register</button>
+                        
+                      </div>
+                      <span class="psw">Already have an account<a href="log.html">  Sign in?</a></span>
+    
+                    </form>
+    
+                  </div>
+                  <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+    
+                    <img src="/Login pages/images/emblem.jpeg"
+                      class="img-fluid" alt="Sample image">
+    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    
+    <script>
+      const handleRegister = () =>{
+            
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('pass').value;
+            let password2 = document.getElementById('pass2').value;
+            let location = document.getElementById('loc').value;
+            var nameregex = /^[A-Za-z]+$/;
+            var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var passregex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+            var jObj = "{\"name\":\"" + name + "\",\"password\":\"" + password + "\",\"email\":\"" + email + "\",\"location\":\"" + location+ "\"}";
+            
+            if (!name.match(nameregex)) {
+			         alert("Name should be only in characters and length should be more than 5 characters");
+			         return false;
+		          } 
+
+            if(!email.match(emailRegex))
+             {
+               window.alert("Invalid Email address!");      
+               return
+             }
+             if (!password.match(passregex)) 
+             {
+                window.alert("Passwords must contain:\na minimum of 1 lower case letter [a-z] and\na minimum of 1 upper case letter [A-Z] and\na minimum of 1 special character and length should be more than 10.");
+                return false;
+             }
+             if(password!=password2)
+             {
+                window.alert("Password is not matching!!");
+                return false;
+             } 
+
+             if(location=="")
+             {
+               window.alert("Please fill the location field");
+               return false;
+             }
+           console.log(jObj);
+      
+           //Validation
+           
+             
+           //fetch request
+            fetch('http://localhost:9000/sign',
+            {
+              method: "POST",
+              body: jObj,
+              headers: { "Content-type": "application/json; charset=UTF-8" }
+            })
+
+            .then(response => response.json())
+              .then(json => {
+                if (json.status) {						
+                  console.log("true")
+                  
+                  window.alert("Registered Successfuly");
+                  //code
+                  return
+                }
+                
+              })
+            .catch(err => window.location.href = "/Admin/Dashboard_temp/html/error-404.html");
+          
+
+            }
+    </script>
+  </body>
+</html>

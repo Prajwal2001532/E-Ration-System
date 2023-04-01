@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "connectivity",
+  "main": "index.js",
+  "scripts": {
+    "test": "init",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "blank"
+  },
+  "author": "Prajwal BK",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.21",
+    "path": "^0.12.7",
+    "postman": "^0.2.0"
+  }
+}

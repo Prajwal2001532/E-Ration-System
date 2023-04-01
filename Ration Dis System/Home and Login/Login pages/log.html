@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Manager-Login</title>
+
+          <!-- Bootstrap CSS -->
+          
+          <!-- Bootstrap JS -->
+          <link href="css/bootstrap.min.css" rel="stylesheet">
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+          <link rel = " stylesheet" href ="css/style.css">
+    </head>
+
+     <body> 
+      <div class = "container h-100">
+        <div class = "group">
+          <div class = ".wrapper">
+            <img src="/Login pages/images/emblem.jpeg">
+          </div>
+          <div class="wrapper">
+            <form class="form-signin" onsubmit="return false">
+              <div class="imgcontainer">
+                <img src="images/user2.png" alt="Avatar" class="avatar">
+              </div>
+               <h2 class="form-signin-heading" style="text-align: center;">Manager Login</h2>
+              
+               <label class="form-label" for="form3Example1c" style="font-size: large;">Email</label>
+               <input type="email" class="form-control" id="username" placeholder="Email Address" required="" autofocus="" />
+               <br/>
+
+               <label class="form-label" for="form3Example1c" style="font-size: large;">Password</label>
+               <input type="password" class="form-control" id="password" placeholder="Password" required=""/>      
+               <br/>
+               
+               <label class="checkbox">
+               <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+               </label>
+               <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="handleSub()">Login</button>
+               <br/>   
+               <span class="psw">Forgot <a href="#">password?</a></span><br/>
+            </form>
+         </div>
+        </div> 
+      </div>
+      <script>
+        const handleSub = () => {
+          let username = document.getElementById("username").value;
+          let password = document.getElementById("password").value;
+          var jsonObj = "{\"username\":\"" + username +  "\",\"password\":\"" + password + "\"}"
+          //Empty check
+          //jstring = JSON.parse(jsonObj);
+          console.log(jsonObj);
+          
+             
+          //Validation
+          fetch('http://localhost:9000/mauth', {
+              method: "POST",
+              body: jsonObj,
+              headers: { "Content-type": "application/json; charset=UTF-8" }
+			    })     
+                     
+            .then(response => response.json())
+            .then(json => {
+              if (json.status) {						
+                localStorage.setItem("manage", "true")
+                localStorage.setItem("auth", username)
+                console.log("true")
+                window.location.href = "/Manager/Dashboard_temp/html/index.html"
+                //code
+                return
+              }
+              console.log("false")
+              window.alert("Invalid Credentials or Admin Should approve the request !!");
+            })
+            .catch(err => window.location.href = "/Admin/Dashboard_temp/html/error-404.html");
+        }
+      </script>
+     </body>
+</html>
+

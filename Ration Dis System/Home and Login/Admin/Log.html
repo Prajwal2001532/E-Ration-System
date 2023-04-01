@@ -1,0 +1,75 @@
+<html>
+
+<head>
+	<title>Administrator</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<!-- Bootstrap JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+	<link rel=" stylesheet" href="/Login pages/css/style.css">
+
+</head>
+
+<body>
+	<div class="group">
+		<div class=".wrapper">
+		</div>
+		<div class="wrapper">
+			<form class="form-signin" onsubmit="return false">
+				<div class="imgcontainer">
+					<img src="/Login pages/images/user2.png" alt="Avatar" class="avatar">
+				</div>
+				<h2 class="form-signin-heading" style="text-align:center;">Administrator</h2>
+				<label class="form-label" for="form3Example1c" style="font-size: large;">Login Id</label>
+				<input type="text" class="form-control" id="username" placeholder="Enter Id" required="" autofocus="" />
+				<br />
+				<label class="form-label" for="form3Example1c" style=" font-size: large;">Password</label>
+				<input type="password" class="form-control" id="password" placeholder="Enter Password" required="" />
+				<label class="checkbox">
+					<input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+				</label>
+				<button class="btn btn-lg btn-primary btn-block" type="submit" onclick="handleSubmit()">Login</button>
+			</form>
+		</div>
+	</div>
+	<script>
+		const handleSubmit = () => {
+			let username = document.getElementById("username").value;
+			let password = document.getElementById("password").value;
+			var jsonObj = {
+				username: username,
+				password: password
+			}
+            
+			//Empty check
+			if (!username || !password)
+				return
+
+			//Validation
+			fetch('http://localhost:9000/auth', {
+				method: "POST",
+				body: JSON.stringify(jsonObj),
+				headers: { "Content-type": "application/json; charset=UTF-8" }
+			})
+				.then(response => response.json())
+				.then(json => {
+					if (json.status) {						
+						localStorage.setItem("auth", "true")
+						console.log("true")
+						window.location.href = "/Admin/Dashboard_temp/html/index.html"
+						//code
+						return
+					}
+					console.log("false")
+					window.alert("Invalid Credentials!!!");
+				})
+				.catch(err => window.location.href = "/Admin/Dashboard_temp/html/error-404.html");
+		}
+	</script>
+</body>
+
+</html>
