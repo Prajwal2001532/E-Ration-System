@@ -37,15 +37,18 @@ The ration system in the government scheme is only for applying Smart card, not 
 The system built in this project designed for the operational site manages all the problems faced during real time implementation which includes ordering by the user and registering, notifying about requirement of order is ready. Distribution and management problem is concerned with daily activity of ration store.
 Description of Methods and Flow in the System:
 
-##Modules
 
 - ###  Order Management Module
 
 >This module deals with Manager is dealing with user order management and making sure that the order items is ready and update the management module in order list. This module explores all the operation which is necessary for ordering, user who is ordering daily ration items to create an order and send it to manager portal. This includes all the payment mode necessary for finalizing the order.
 
 
-- ### Report module: 
+- ### Report module 
 
 >This module contains the entire order list in the report format which is seen by store manager for analytics and admin for his cross verification purpose.
+
+- ### Automated Message updation 
+
+>This module requistics all the message automation and information exchange between customer and store manager of same location for clarification and message sent to customer's respective phone number about daily product activation and all the product order or ready message.
 
 
