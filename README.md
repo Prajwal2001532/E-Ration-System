@@ -1,6 +1,6 @@
 # E-Ration-System
 
-A system that controls all the impoortant entity operation which includes the public with E-Ration Card purchasing cost-effective ration from his nearby Ration store managed by store manager. Admin adminsiters the overall store managers in different area and controls account access auhtority and multiple store relation actions.
+A system that controls all the important entity operation which includes the public with E-Ration Card purchasing cost-effective ration from his nearby Ration store managed by store manager. Admin adminsiters the overall store managers in different area and controls account access auhtority and multiple store relation actions.
 
 ## Objectives
 This system can be used in many business parts/areas that may require expertise operation and management for Ration manager and all the operations. The E-ration system is designed to tackle the current problems based on the distribution and customer interaction which includes reckless work of manager and to properly verify the distribution to people from government, the avail of messages which helps in quick updating of action to customers which should be followed up for further interaction and API which helps the system to interact with many components which makes the process easier to control over the customer daily ration updating and order management with Admin overall analysis of the total inventory orders and product.
